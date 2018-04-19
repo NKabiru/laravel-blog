@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,13 +7,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Layouts Example</title>
+    <title>Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="/css/album.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +22,11 @@
 @include('layouts.navbar')
 
     <div class="container">
-        @yield('content')
+        <div class="row">
+            @yield('content')
+
+            @include('layouts.sidebar')
+        </div>
     </div>
 
 @include('layouts.footer')

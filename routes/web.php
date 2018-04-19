@@ -16,8 +16,15 @@ Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
 Route::get('/', 'PostController@index');
+Route::get('/posts/create', 'PostController@create');
+
 Route::get('/posts/{post}', 'PostController@show');
+
+
+Route::post('/posts', 'PostController@store');
+
 
 Route::get('about', function () {
     return view('about');
 });
+

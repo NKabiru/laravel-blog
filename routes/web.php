@@ -23,6 +23,8 @@ Route::get('/posts/{post}', 'PostController@show');
 
 Route::post('/posts', 'PostController@store');
 
+Route::post('/posts/{post}/comments', 'CommentController@store');
+
 
 Route::get('about', function () {
     return view('about');

@@ -16,7 +16,10 @@ Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
 Route::get('/', 'PostController@index')->name('home');
-Route::get('/posts/create', 'PostController@create');
+Route::get('/posts/create', function () {
+    return auth()->check() ?
+        View::make('posts.create') : View::make('sessions.create');
+} );
 Route::get('/posts/{post}', 'PostController@show');
 Route::post('/posts', 'PostController@store');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Post;
 
@@ -14,9 +15,18 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()
+            ->filter(request(['month', 'year']))
+            ->get();
 
-        return view('posts.index', compact('posts'));
+
+        $archives = Post::selectRaw('YEAR(created_at) as year, MONTHNAME(created_at) as month, COUNT(*) published')
+            ->groupBy('year', 'month')
+            ->orderByRaw('min(created_at) desc')
+            ->get()
+            ->toArray();
+
+        return view('posts.index', compact('posts', 'archives'));
     }
 
     public function show(Post $post)

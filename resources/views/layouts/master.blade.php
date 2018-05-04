@@ -21,6 +21,8 @@
 
 @include('layouts.navbar')
 
+@include('layouts.flash')
+
     <div class="container">
         <div class="row">
             @yield('content')
